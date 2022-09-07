@@ -100,12 +100,270 @@ paths:
         500:
           description: 'Server Error'
 
+# [POST] login
+  /login:
+    post:
+      tags:
+      - users
+      summary: Login
+      parameters:
+      - name: body
+        in: body
+        description: user Data
+        required: true
+        schema:
+          $ref: '#/definitions/users'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+
+  # [POST] login
+  /products:
+    post:
+      tags:
+      - products
+      summary: Add Category 
+      parameters:
+      - name: body
+        in: body
+        description: product Data
+        required: true
+        schema:
+          $ref: '#/definitions/products'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+    get:
+      tags:
+      - products
+      summary: Find All Products
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+    put:
+      tags:
+      - products
+      summary: Login
+      parameters:
+      - name: body
+        in: body
+        description: user Data
+        required: true
+        schema:
+          $ref: '#/definitions/products'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+    delete:
+      tags:
+      - products
+      summary: Login
+      parameters:
+      - name: body
+        in: body
+        description: product Data
+        required: true
+        schema:
+          $ref: '#/definitions/products'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+  /categories:
+    post:
+      tags:
+      - categories
+      summary: Add Category 
+      parameters:
+      - name: body
+        in: body
+        description: category Data
+        required: true
+        schema:
+          $ref: '#/definitions/categories'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+    get:
+      tags:
+      - categories
+      summary: Find All Categorys
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+    put:
+      tags:
+      - categories
+      summary: Login
+      parameters:
+      - name: body
+        in: body
+        description: user Data
+        required: true
+        schema:
+          $ref: '#/definitions/products'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+    delete:
+      tags:
+      - categories
+      summary: Login
+      parameters:
+      - name: body
+        in: body
+        description: user Data
+        required: true
+        schema:
+          $ref: '#/definitions/products'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
 # definitions
+  /products/getProductsByCategoryId:
+    post: 
+      tags:
+      - products
+      summary: Get Products By Category Id
+      parameters:
+      - name: body
+        in: body
+        description: category Data
+        required: true
+        schema:
+            type: object
+            properties:
+              id:
+                type: string
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+  /carts:
+    post:
+      tags:
+      - carts
+      summary: Add Category 
+      parameters:
+      - name: body
+        in: body
+        description: product Data
+        required: true
+        schema:
+          $ref: '#/definitions/products'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+    get:
+      tags:
+      - carts
+      summary: Find All Products
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+    put:
+      tags:
+      - carts
+      summary: Login
+      parameters:
+      - name: body
+        in: body
+        description: user Data
+        required: true
+        schema:
+          $ref: '#/definitions/products'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+    delete:
+      tags:
+      - carts
+      summary: Login
+      parameters:
+      - name: body
+        in: body
+        description: product Data
+        required: true
+        schema:
+          $ref: '#/definitions/products'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
 definitions:
   users:
     type: object
     required:
-        - email
         - password
     properties:
       email:
@@ -114,7 +372,35 @@ definitions:
       password:
         type: string
         description: user Password
-
+      username:
+        type: string
+        description: user Username
+  products:
+    type: object
+    required: false
+    properties:
+      price:
+        type: number
+        description: product Price
+      category:
+        type: string
+        description: product category
+      title:
+        type: string
+        description: product title
+      description:
+        type: string
+        description: product description
+      image:
+        type: string
+        description: product image
+  categories:
+    type: object
+    required:
+    properties:
+      name:
+        type: string
+        description: category name
 schemes:
  - https
  - http

@@ -1,0 +1,33 @@
+# baseURL
+@baseURL = https://localhost:3000
+
+###
+# Find All Products
+GET {{ baseURL }}/products
+
+###
+# Find User By Id
+GET {{ baseURL }}/products/1
+
+###
+# Create User
+POST {{ baseURL }}/products
+Content-Type: application/json
+
+data: {
+    
+}
+
+###
+# Modify User By Id
+PUT {{ baseURL }}/products/1
+Content-Type: application/json
+
+{
+    "email": "example@email.com",
+    "password": "password"
+}
+
+###
+# Delete User By Id
+DELETE {{ baseURL }}/products/1

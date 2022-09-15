@@ -47,6 +47,13 @@ class CartService {
 
     return deleteCartById;
   }
+
+  public async getCartByUserId(userId: string): Promise<Cart[]> {
+    const findCart: Cart[] = await this.carts.find({ user: userId });
+    if (!findCart) throw new HttpException(409, "Cart doesn't exist");
+
+    return findCart;
+  }
 }
 
 export default CartService;

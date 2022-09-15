@@ -1,10 +1,11 @@
 import { model, Schema, Document } from 'mongoose';
 import { Cart } from '@/interfaces/cart.interface';
+import { CartProduct } from '@/interfaces/cartProduct.interface.';
 
 const cartSchema: Schema = new Schema({
-  product: {
-    type: Schema.Types.ObjectId,
-    ref: 'Product',
+  products: {
+    type: Array<CartProduct>(),
+    ref: 'CartProduct',
     required: true,
   },
   quantity: {

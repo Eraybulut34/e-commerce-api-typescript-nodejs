@@ -1,9 +1,11 @@
-import { IsEmail, IsString } from 'class-validator';
+import { IsEmail, IsString, IsNumber } from 'class-validator';
 
 export class CreateCartDto {
- @IsString()
+  @IsString()
   public product: string;
   @IsString()
-  public ;
+  public user: string;
+  @IsNumber()
+  public quantity: number;
 
 }

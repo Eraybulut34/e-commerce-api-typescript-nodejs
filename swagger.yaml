@@ -301,7 +301,7 @@ paths:
         description: product Data
         required: true
         schema:
-          $ref: '#/definitions/products'
+          $ref: '#/definitions/cart'
       responses:
         200:
           description: 'OK'
@@ -314,7 +314,7 @@ paths:
     get:
       tags:
       - carts
-      summary: Find All Products
+      summary: Find All Carts
       responses:
         200:
           description: 'OK'
@@ -323,14 +323,14 @@ paths:
     put:
       tags:
       - carts
-      summary: Login
+      summary: Edit Cart
       parameters:
       - name: body
         in: body
         description: user Data
         required: true
         schema:
-          $ref: '#/definitions/products'
+          $ref: '#/definitions/cart'
       responses:
         200:
           description: 'OK'
@@ -343,14 +343,14 @@ paths:
     delete:
       tags:
       - carts
-      summary: Login
+      summary: Delete Cart
       parameters:
       - name: body
         in: body
         description: product Data
         required: true
         schema:
-          $ref: '#/definitions/products'
+          $ref: '#/definitions/cart'
       responses:
         200:
           description: 'OK'
@@ -401,6 +401,28 @@ definitions:
       name:
         type: string
         description: category name
+  cart:
+    type: object
+    required: false
+    properties:
+      user: 
+        type: string
+        description: user id
+      product:
+        type: string
+        description: product Price
+      quantity:
+        type: number
+        description: product category
+      price:
+        type: number
+        description: product title
+      description:
+        type: string
+        description: product description
+      image:
+        type: string
+        description: product image
 schemes:
  - https
  - http

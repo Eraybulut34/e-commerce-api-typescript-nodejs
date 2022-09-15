@@ -1,6 +1,9 @@
+import { Product } from "./product.interface";
+
+
 export interface Cart {
   _id: string;
-  product: string;
+  products: Array<Product>;
   quantity: number;
   price: number;
   total: number;

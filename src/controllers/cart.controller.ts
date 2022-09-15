@@ -31,7 +31,6 @@ class Carts {
     try {
       const cartData: CreateCartDto = req.body;
       const createCartData: Cart = await this.cartService.createCart(cartData);
-
       res.status(201).json({ data: createCartData, message: 'created' });
     } catch (error) {
       next(error);
@@ -60,6 +59,16 @@ class Carts {
       next(error);
     }
   };
+
+  public getCartByUserId = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const userId: string = req.params.userId;
+      const findCartData: Cart[] = await this.cartService.getCartByUserId(userId);
+      res.status(200).json({ data: findCartData, message: 'Get Cart Success' });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export default Carts;
